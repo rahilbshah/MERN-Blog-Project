@@ -1,10 +1,10 @@
 import User from '../models/UsersModel.js'
-
+import bcrypt from 'bcrypt'
 //Update the User
 export const updateUser = async (req, res) => {
     if (req.body.userId === req.params.id) {
         if (req.body.password) {
-            const salt = await bcrypt.genSalt(10);
+            const salt = await bcrypt.genSalt(10)
             req.body.password = await bcrypt.hash(req.body.password, salt);
         }
         try {

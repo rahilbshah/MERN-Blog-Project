@@ -6,10 +6,14 @@ import Home from './pages/Home/Home'
 import Single from './pages/Single/Single'
 import Write from './pages/Write/Write'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import './App.css'
+import { useContext } from 'react'
+import { Context } from './context/Context'
 const App = () => {
-  const user=false;
+  const {user}=useContext(Context)
   return (
     <>
+    <div onLoad={window.scroll(0, 0)}>
       <BrowserRouter>
         <Topbar />
         <Routes>
@@ -21,6 +25,7 @@ const App = () => {
           <Route path="/write" element={user ? <Write/> :<Register />} />
         </Routes>
       </BrowserRouter>
+    </div>
     </>
   )
 }
